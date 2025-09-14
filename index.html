@@ -1,55 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Double E Furniture & Mattresses</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/png" href="Final logo.png">
 
   <!-- Elfsight Google Reviews -->
   <script src="https://elfsightcdn.com/platform.js" async></script>
 
   <style>
-    nav ul li.catalog-dropdown ul {
-      position: absolute; top: 100%; left: 0; background: #fff;
-      list-style: none; margin: 0; padding: 10px; border: 1px solid #ccc;
-      display: none; max-height: 200px; overflow-y: auto; z-index: 1000;
-    }
-    nav ul li.catalog-dropdown:hover ul,
-    nav ul li.catalog-dropdown.active ul { display: block; }
-    nav ul li.catalog-dropdown ul li a {
-      display: block; padding: 5px 10px; color: #222; text-decoration: none;
-    }
+    body { margin: 0; font-family: Arial, sans-serif; color: #222; }
+    header { display: flex; align-items: center; justify-content: space-between; padding: 15px 40px; background: #f8f8f8; border-bottom: 2px solid #ddd; }
+    header img { height: 100px; width: auto; }
+    nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 20px; align-items: center; }
+    nav ul li a { text-decoration: none; color: #222; }
+    nav ul li.catalog-dropdown { position: relative; }
+    nav ul li.catalog-dropdown ul { position: absolute; top: 100%; left: 0; background: #fff; border: 1px solid #ccc; list-style: none; margin: 0; padding: 10px; display: none; max-height: 200px; overflow-y: auto; }
+    nav ul li.catalog-dropdown:hover ul, nav ul li.catalog-dropdown.active ul { display: block; }
+    nav ul li.catalog-dropdown ul li a { display: block; padding: 5px 10px; color: #222; }
     nav ul li.catalog-dropdown ul li a:hover { background: #f0f0f0; }
-    nav ul li a { color: #222 !important; text-decoration: none !important; }
+    #lang-toggle { margin-left: 20px; padding: 8px 12px; background: #222; color: #fff; border: none; cursor: pointer; border-radius: 4px; }
+    section { padding: 60px; text-align: center; }
+    section:nth-child(even) { background: #fafafa; }
+    #services ul { max-width: 700px; margin: auto; text-align: left; line-height: 1.8; }
     #services ul li strong { display: inline-block; width: 180px; }
     .carousel { display: flex; justify-content: center; align-items: center; position: relative; margin-top: 20px; }
-    .carousel img { width: 250px; height: 250px; object-fit: cover; margin: 0 10px; transition: transform .3s, opacity .3s; opacity: .5; }
+    .carousel img { width: 250px; height: 250px; object-fit: cover; margin: 0 10px; transition: transform 0.3s, opacity 0.3s; opacity: 0.5; }
     .carousel img.center { transform: scale(1.2); opacity: 1; }
-    .carousel button { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,.5); color: #fff; border: none; font-size: 24px; padding: 10px; cursor: pointer; border-radius: 50%; }
+    .carousel button { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: #fff; border: none; font-size: 24px; padding: 10px; cursor: pointer; border-radius: 50%; }
     .carousel button#prev { left: 0; }
     .carousel button#next { right: 0; }
+    footer { text-align: center; padding: 20px; background: #f8f8f8; border-top: 2px solid #ddd; }
+    footer a { margin: 0 5px; }
   </style>
 </head>
 <body>
   <!-- Header -->
-  <header style="display:flex;align-items:center;justify-content:space-between;padding:15px 40px;background:#f8f8f8;border-bottom:2px solid #ddd;">
+  <header>
     <div style="display:flex;align-items:center;gap:20px;">
-      <img src="Final logo.png" alt="Double E Logo" style="height:100px;width:auto;"/>
+      <img src="Final logo.png" alt="Double E Logo">
       <div>
-        <h1 style="margin:0;font-size:28px;color:#222;">Double E Furniture</h1>
+        <h1 style="margin:0;font-size:28px;">Double E Furniture</h1>
         <p style="margin:0;font-size:16px;color:#555;">Transform Your Space, Elevate Your Comfort – No Credit Needed!</p>
       </div>
     </div>
     <nav>
-      <ul style="list-style:none;margin:0;padding:0;display:flex;gap:20px;align-items:center;">
+      <ul>
         <li><a href="#home" data-en="Home" data-es="Inicio">Home</a></li>
         <li><a href="#about" data-en="About Us" data-es="Sobre Nosotros">About Us</a></li>
         <li><a href="#services" data-en="Services" data-es="Servicios">Services</a></li>
         <li><a href="#gallery" data-en="Gallery" data-es="Galería">Gallery</a></li>
         <li><a href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
-        <li class="catalog-dropdown" style="position:relative;">
+        <!-- Catalog Dropdown -->
+        <li class="catalog-dropdown">
           <a href="#" data-en="Catalogs ▾" data-es="Catálogos ▾">Catalogs ▾</a>
           <ul>
             <li><a href="https://www.coasterfurniture.com/browse/catalogs" target="_blank">Coaster</a></li>
@@ -60,39 +65,39 @@
           </ul>
         </li>
       </ul>
-      <button id="lang-toggle" style="margin-left:20px;padding:8px 12px;background:#222;color:#fff;border:none;cursor:pointer;border-radius:4px;">ENG</button>
+      <button id="lang-toggle">ENG</button>
     </nav>
   </header>
 
   <!-- Home -->
-  <section id="home" style="padding:60px;text-align:center;">
+  <section id="home">
     <h2 data-en="Welcome to Double E Furniture & Mattresses" data-es="Bienvenidos a Double E Furniture & Mattresses">Welcome to Double E Furniture & Mattresses</h2>
-    <p style="font-size:18px;max-width:700px;margin:20px auto;" data-en="Transform Your Space, Elevate Your Comfort – No Credit Needed!" data-es="¡Transforma tu espacio, eleva tu comodidad – sin necesidad de crédito!">Transform Your Space, Elevate Your Comfort – No Credit Needed!</p>
+    <p data-en="Transform Your Space, Elevate Your Comfort – No Credit Needed!" data-es="¡Transforma tu espacio, eleva tu comodidad – sin necesidad de crédito!">Transform Your Space, Elevate Your Comfort – No Credit Needed!</p>
   </section>
 
   <!-- About -->
-  <section id="about" style="padding:60px;background:#fafafa;">
+  <section id="about">
     <h2 data-en="About Us" data-es="Sobre Nosotros">About Us</h2>
-    <p data-en="At Double E Furniture, we provide high-quality furniture and mattresses for every home. Our mission is to offer affordable and stylish solutions with easy financing for everyone." data-es="En Double E Furniture, ofrecemos muebles y colchones de alta calidad para cada hogar. Nuestra misión es brindar soluciones asequibles y elegantes con financiamiento fácil para todos.">
-      At Double E Furniture, we provide high-quality furniture and mattresses for every home. Our mission is to offer affordable and stylish solutions with easy financing for everyone.
+    <p data-en="At Double E Furniture, we specialize in high-quality furniture and mattresses at affordable prices. With our no-credit-needed financing, everyone can enjoy stylish and comfortable living spaces." data-es="En Double E Furniture, nos especializamos en muebles y colchones de alta calidad a precios accesibles. Con nuestro financiamiento sin necesidad de crédito, todos pueden disfrutar de espacios cómodos y elegantes.">
+      At Double E Furniture, we specialize in high-quality furniture and mattresses at affordable prices. With our no-credit-needed financing, everyone can enjoy stylish and comfortable living spaces.
     </p>
   </section>
 
   <!-- Services -->
-  <section id="services" style="padding:60px;">
+  <section id="services">
     <h2 data-en="Our Services" data-es="Nuestros Servicios">Our Services</h2>
-    <ul style="max-width:700px;margin:auto;text-align:left;line-height:1.8;">
-      <li><strong>Furniture Sales:</strong> Wide selection of stylish and affordable furniture.</li>
-      <li><strong>Mattress Solutions:</strong> Diverse range of high-quality mattresses.</li>
-      <li><strong>Easy Financing:</strong> No-credit-needed financing for everyone.</li>
+    <ul>
+      <li><strong>Furniture Sales:</strong> Stylish and affordable furniture for every room.</li>
+      <li><strong>Mattress Solutions:</strong> High-quality mattresses for restful sleep.</li>
+      <li><strong>Easy Financing:</strong> No-credit-needed options for everyone.</li>
       <li><strong>Delivery & Setup:</strong> We deliver and set up your furniture.</li>
     </ul>
   </section>
 
   <!-- Gallery -->
-  <section id="gallery" style="padding:60px;background:#fafafa;">
+  <section id="gallery">
     <h2 data-en="Gallery" data-es="Galería">Gallery</h2>
-    <p>Explore our range of furniture and mattress collections.</p>
+    <p data-en="Browse our collections designed to elevate your home." data-es="Explora nuestras colecciones diseñadas para elevar tu hogar.">Browse our collections designed to elevate your home.</p>
     <div class="carousel" id="carousel">
       <button id="prev">&#10094;</button>
       <div class="carousel-images">
@@ -105,46 +110,47 @@
   </section>
 
   <!-- Contact -->
-  <section id="contact" style="padding:60px;">
+  <section id="contact">
     <h2 data-en="Contact Us" data-es="Contáctanos">Contact Us</h2>
-    <p>Call us or Visit us now!</p>
+    <p data-en="Call us or visit us now!" data-es="¡Llámanos o visítanos ahora!">Call us or visit us now!</p>
     <p><strong>Address:</strong> 6610 Van Nuys Blvd, Van Nuys, CA 91405</p>
     <p><strong>Phone:</strong> (818) 387-8021</p>
     <p><strong>Email:</strong> DoubleEcorporate@gmail.com</p>
     <a href="https://www.facebook.com/p/Double-E-Furniture-Mattresses-61574866544621/" target="_blank" style="display:inline-block;margin-top:10px;padding:10px 20px;background:#1877f2;color:#fff;text-decoration:none;border-radius:5px;">Message Us on Facebook</a>
     <form style="max-width:500px;margin:20px auto;display:flex;flex-direction:column;gap:10px;">
-      <input type="text" placeholder="Name / Nombre" required/>
-      <input type="tel" placeholder="Phone Number / Celular" required/>
-      <input type="email" placeholder="Email" required/>
+      <input type="text" placeholder="Name / Nombre" required>
+      <input type="tel" placeholder="Phone Number / Celular" required>
+      <input type="email" placeholder="Email" required>
       <textarea placeholder="Message / Mensaje" rows="5" required></textarea>
       <button type="submit" style="padding:10px;background:#222;color:#fff;border:none;cursor:pointer;">Enviar</button>
     </form>
   </section>
 
   <!-- Reviews -->
-  <section style="padding:40px;text-align:center;">
+  <section>
     <h2 data-en="Customer Reviews" data-es="Reseñas de Clientes">Customer Reviews</h2>
     <div class="elfsight-app-cdb641ce-921d-46d6-abf6-651243490a90" data-elfsight-app-lazy></div>
   </section>
 
   <!-- Directions -->
-  <section style="padding:40px;text-align:center;">
+  <section>
     <h2 data-en="Get Directions" data-es="Obtener Direcciones">Get Directions</h2>
     <iframe src="https://www.google.com/maps?q=6610+Van+Nuys+Blvd,+Van+Nuys,+CA+91405&output=embed" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
   </section>
 
   <!-- Footer -->
-  <footer style="text-align:center;padding:20px;background:#f8f8f8;border-top:2px solid #ddd;">
+  <footer>
     <p>&copy; 2025 Double E Furniture & Mattresses. All rights reserved.</p>
-    <p>Follow us:
-      <a href="https://www.tiktok.com/@doubleefurniture" target="_blank">TikTok</a> |
-      <a href="https://www.instagram.com/double_e_furniture_mattresses/?hl=en" target="_blank">Instagram</a> |
+    <p>Follow us: 
+      <a href="https://www.tiktok.com/@doubleefurniture" target="_blank">TikTok</a> | 
+      <a href="https://www.instagram.com/double_e_furniture_mattresses/?hl=en" target="_blank">Instagram</a> | 
       <a href="https://www.facebook.com/p/Double-E-Furniture-Mattresses-61574866544621/" target="_blank">Facebook</a>
     </p>
   </footer>
 
+  <!-- Scripts -->
   <script>
-    // Catalog dropdown toggle
+    // Catalog toggle
     const catalogDropdown = document.querySelector('.catalog-dropdown');
     catalogDropdown.addEventListener('click', e => {
       if (e.target.closest('a')?.getAttribute('href') === "#") {
