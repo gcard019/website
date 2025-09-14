@@ -71,7 +71,6 @@
     }
     nav ul li a:hover { background: rgba(255,255,255,0.1); }
 
-    /* Dropdown */
     nav ul li ul {
       display: none;
       position: absolute;
@@ -89,7 +88,6 @@
     nav ul li ul li a { color: #fff; display: block; padding: 8px; }
     nav ul li ul li a:hover { background: rgba(255,255,255,0.1); }
 
-    /* Lang button */
     #lang-toggle {
       margin-left: 16px;
       padding: 8px 12px;
@@ -101,10 +99,14 @@
       font-weight: 600;
     }
 
-    /* Hero */
+    /* Hero Full Width */
     .hero {
+      width: 100vw;
+      min-height: 650px;
       text-align: center;
-      padding: 80px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       background-image: url('https://scontent-lax3-2.xx.fbcdn.net/v/t39.30808-6/498131851_122115971882828884_6807329288387040295_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=MDjdkAYKf5QQ7kNvwHK8rBM&_nc_oc=AdkJlt-vM_imMa58cO800uoAFZBKCU5jg2jTDGUeZ3h5hNVOA4IcSVnNT2QKPDCGgcw&_nc_zt=23&_nc_ht=scontent-lax3-2.xx&_nc_gid=VXZXrqXfjw_tgnnJJJisXg&oh=00_AfbWhb-TFoU4WZPjLaNQb-3CtSAzRglEj9Q8_nQoBPRSCw&oe=68CD3A97');
       background-size: cover;
       background-position: center;
@@ -112,7 +114,6 @@
       color: #fff;
       position: relative;
     }
-
     .hero::before {
       content: "";
       position: absolute;
@@ -120,14 +121,13 @@
       background: rgba(0,0,0,0.4);
       z-index: 0;
     }
-
     .hero h1, .hero p {
       position: relative;
       z-index: 1;
+      margin: 0 20px;
     }
-
-    .hero h1 { font-size: 36px; margin-bottom: 20px; }
-    .hero p { font-size: 18px; }
+    .hero h1 { font-size: 48px; }
+    .hero p { font-size: 22px; }
 
     /* Sections */
     section {
@@ -161,7 +161,7 @@
       justify-content: center;
       gap: 14px;
     }
-    .carousel img {
+    #carousel-images img {
       width: 280px;
       height: 280px;
       object-fit: cover;
@@ -170,7 +170,7 @@
       opacity: 0.6;
       transition: all 0.3s;
     }
-    .carousel img.center { opacity: 1; transform: scale(1.05); }
+    #carousel-images img.center { opacity: 1; transform: scale(1.05); }
     .carousel button {
       background: var(--dark);
       color: #fff;
@@ -240,7 +240,6 @@
     footer a { margin: 0 6px; font-weight: 600; }
   </style>
 </head>
-
 <body>
   <!-- Header -->
   <header>
@@ -307,9 +306,7 @@
     <p>Explore our latest showroom highlights.</p>
     <div class="carousel">
       <button id="prev">&#10094;</button>
-      <img src="https://via.placeholder.com/280?text=Item+1" class="center" alt="Gallery item 1">
-      <img src="https://via.placeholder.com/280?text=Item+2" alt="Gallery item 2">
-      <img src="https://via.placeholder.com/280?text=Item+3" alt="Gallery item 3">
+      <div id="carousel-images"></div>
       <button id="next">&#10095;</button>
     </div>
   </section>
@@ -373,8 +370,24 @@
       setLanguage(currentLang === "en" ? "es" : "en");
     });
 
-    // Carousel
-    const imgs = document.querySelectorAll(".carousel img");
+    // Carousel Images from gallery folder
+    const galleryImages = [
+      "gallery/1.jpg",
+      "gallery/2.jpg",
+      "gallery/3.jpg"
+      // Add more images here
+    ];
+
+    const carouselContainer = document.getElementById("carousel-images");
+    galleryImages.forEach((src, i) => {
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = "Gallery item " + (i + 1);
+      if(i === 0) img.classList.add("center");
+      carouselContainer.appendChild(img);
+    });
+
+    const imgs = document.querySelectorAll("#carousel-images img");
     let idx = 0;
     function updateCarousel() {
       imgs.forEach((img, i) => img.classList.toggle("center", i === idx));
