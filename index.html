@@ -57,7 +57,8 @@
 
         /* Enhanced Header */
         header {
-            background: rgba(30, 41, 59, 0.95);
+            /* Changed header background from blue gradient to matte black */
+            background: #28282B;
             backdrop-filter: blur(20px);
             box-shadow: 0 8px 32px rgba(0,0,0,0.1);
             position: sticky;
@@ -433,6 +434,14 @@
             padding: 40px 0;
         }
 
+        /* Added horizontal layout for gallery container */
+        #gallery-container {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
         .carousel img {
             width: 300px;
             height: 300px;
@@ -442,6 +451,8 @@
             opacity: 0.7;
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
+            /* Ensure images don't shrink */
+            flex-shrink: 0;
         }
 
         .carousel img.center {
