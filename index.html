@@ -701,20 +701,20 @@
         <h2 data-en="Our Services" data-es="Nuestros Servicios">Our Services</h2>
         <ul>
             <li>
-                <strong>Furniture Sales</strong>
-                <p>Wide selection of living, dining, and bedroom furniture with modern designs and premium quality materials.</p>
+                <strong data-en="Furniture Sales" data-es="Venta de Muebles">Furniture Sales</strong>
+                <p data-en="Wide selection of living, dining, and bedroom furniture with modern designs and premium quality materials." data-es="Amplia selección de muebles para sala, comedor y dormitorio con diseños modernos y materiales de primera calidad.">Wide selection of living, dining, and bedroom furniture with modern designs and premium quality materials.</p>
             </li>
             <li>
-                <strong>Mattress Solutions</strong>
-                <p>Premium mattresses for restful sleep, featuring the latest comfort technology and ergonomic support.</p>
+                <strong data-en="Mattress Solutions" data-es="Soluciones de Colchones">Mattress Solutions</strong>
+                <p data-en="Premium mattresses for restful sleep, featuring the latest comfort technology and ergonomic support." data-es="Colchones premium para un sueño reparador, con la última tecnología de comodidad y soporte ergonómico.">Premium mattresses for restful sleep, featuring the latest comfort technology and ergonomic support.</p>
             </li>
             <li>
-                <strong>Easy Financing</strong>
-                <p>Flexible, no-credit-needed financing plans that make your dream furniture accessible and affordable.</p>
+                <strong data-en="Easy Financing" data-es="Financiamiento Fácil">Easy Financing</strong>
+                <p data-en="Flexible, no-credit-needed financing plans that make your dream furniture accessible and affordable." data-es="Planes de financiamiento flexibles sin necesidad de crédito que hacen tus muebles soñados accesibles y asequibles.">Flexible, no-credit-needed financing plans that make your dream furniture accessible and affordable.</p>
             </li>
             <li>
-                <strong>Delivery & Setup</strong>
-                <p>Fast delivery and professional setup service to get your new furniture ready in no time.</p>
+                <strong data-en="Delivery & Setup" data-es="Entrega e Instalación">Delivery & Setup</strong>
+                <p data-en="Fast delivery and professional setup service to get your new furniture ready in no time." data-es="Entrega rápida y servicio de instalación profesional para tener tus muebles nuevos listos en poco tiempo.">Fast delivery and professional setup service to get your new furniture ready in no time.</p>
             </li>
         </ul>
     </section>
@@ -722,7 +722,7 @@
     <!-- Gallery -->
     <section id="gallery">
         <h2 data-en="Gallery" data-es="Galería">Gallery</h2>
-        <p>Explore our latest showroom highlights.</p>
+        <p data-en="Explore our latest showroom highlights." data-es="Explora lo más destacado de nuestro showroom.">Explore our latest showroom highlights.</p>
         <div class="carousel">
             <button id="prev">❮</button>
             <img src="https://via.placeholder.com/300?text=Item+1" class="center" alt="Gallery item 1">
@@ -737,18 +737,18 @@
         <h2 data-en="Contact Us" data-es="Contáctanos">Contact Us</h2>
         <div class="contact-grid">
             <div class="contact-card">
-                <p><strong>Address:</strong> 6610 Van Nuys Blvd, Van Nuys, CA 91405</p>
-                <p><strong>Phone:</strong> (818) 387-8021</p>
-                <p><strong>Email:</strong> DoubleEcorporate@gmail.com</p>
-                <a href="https://www.facebook.com/p/Double-E-Furniture-Mattresses-61574866544621/" target="_blank" class="fb-btn">Message Us on Facebook</a>
+                <p><strong data-en="Address:" data-es="Dirección:">Address:</strong> 6610 Van Nuys Blvd, Van Nuys, CA 91405</p>
+                <p><strong data-en="Phone:" data-es="Teléfono:">Phone:</strong> (818) 387-8021</p>
+                <p><strong data-en="Email:" data-es="Correo:">Email:</strong> DoubleEcorporate@gmail.com</p>
+                <a href="https://www.facebook.com/p/Double-E-Furniture-Mattresses-61574866544621/" target="_blank" class="fb-btn" data-en="Message Us on Facebook" data-es="Envíanos un Mensaje en Facebook">Message Us on Facebook</a>
             </div>
             <div class="contact-card">
                 <form>
-                    <input type="text" placeholder="Name / Nombre" required>
-                    <input type="tel" placeholder="Phone / Teléfono" required>
-                    <input type="email" placeholder="Email" required>
-                    <textarea rows="5" placeholder="Message / Mensaje" required></textarea>
-                    <button type="submit">Send Message</button>
+                    <input type="text" data-en-placeholder="Name" data-es-placeholder="Nombre" placeholder="Name" required>
+                    <input type="tel" data-en-placeholder="Phone" data-es-placeholder="Teléfono" placeholder="Phone" required>
+                    <input type="email" data-en-placeholder="Email" data-es-placeholder="Correo" placeholder="Email" required>
+                    <textarea rows="5" data-en-placeholder="Message" data-es-placeholder="Mensaje" placeholder="Message" required></textarea>
+                    <button type="submit" data-en="Send Message" data-es="Enviar Mensaje">Send Message</button>
                 </form>
             </div>
         </div>
@@ -777,7 +777,7 @@
     </footer>
 
     <script>
-        // Language toggle
+        // Enhanced Language toggle with form placeholders
         const langToggle = document.getElementById("lang-toggle");
         let currentLang = "en";
 
@@ -785,8 +785,17 @@
             document.querySelectorAll("[data-en]").forEach(el => {
                 el.textContent = lang === "en" ? el.dataset.en : el.dataset.es;
             });
+            
+            // Handle form placeholders
+            document.querySelectorAll("[data-en-placeholder]").forEach(el => {
+                el.placeholder = lang === "en" ? el.dataset.enPlaceholder : el.dataset.esPlaceholder;
+            });
+            
             langToggle.textContent = lang.toUpperCase();
             currentLang = lang;
+            
+            // Update document language attribute
+            document.documentElement.lang = lang;
         }
 
         langToggle.addEventListener("click", () => {
