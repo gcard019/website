@@ -702,9 +702,9 @@
         <p data-en="Explore our latest showroom highlights." data-es="Explora lo más destacado de nuestro showroom.">Explore our latest showroom highlights.</p>
         <div class="carousel">
             <button id="prev">❮</button>
-            <img src="https://via.placeholder.com/300?text=Item+1" class="center" alt="Gallery item 1">
-            <img src="https://via.placeholder.com/300?text=Item+2" alt="Gallery item 2">
-            <img src="https://via.placeholder.com/300?text=Item+3" alt="Gallery item 3">
+            <div id="gallery-container">
+                <!-- Images will be loaded here -->
+            </div>
             <button id="next">❯</button>
         </div>
     </section>
@@ -779,9 +779,57 @@
             setLanguage(currentLang === "en" ? "es" : "en");
         });
 
-        // Enhanced Carousel with smooth transitions
-        const imgs = document.querySelectorAll(".carousel img");
+        let imgs = [];
         let idx = 0;
+
+        async function loadGallery() {
+            try {
+                const response = await fetch('gallery.json');
+                const galleryData = await response.json();
+                const container = document.getElementById('gallery-container');
+                
+                // Clear existing content
+                container.innerHTML = '';
+                
+                // Create image elements
+                galleryData.images.forEach((imageData, index) => {
+                    const img = document.createElement('img');
+                    img.src = imageData.src;
+                    img.alt = imageData.alt;
+                    img.title = imageData.title;
+                    img.style.width = '300px';
+                    img.style.height = '300px';
+                    img.style.objectFit = 'cover';
+                    img.style.borderRadius = 'var(--radius)';
+                    img.style.boxShadow = 'var(--shadow)';
+                    img.style.opacity = '0.7';
+                    img.style.transition = 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                    img.style.cursor = 'pointer';
+                    
+                    if (index === 0) {
+                        img.classList.add('center');
+                    }
+                    
+                    container.appendChild(img);
+                });
+                
+                // Update imgs array for carousel functionality
+                imgs = container.querySelectorAll('img');
+                updateCarousel();
+                
+            } catch (error) {
+                console.error('Error loading gallery:', error);
+                // Fallback to placeholder images
+                const container = document.getElementById('gallery-container');
+                container.innerHTML = `
+                    <img src="https://via.placeholder.com/300?text=Item+1" class="center" alt="Gallery item 1">
+                    <img src="https://via.placeholder.com/300?text=Item+2" alt="Gallery item 2">
+                    <img src="https://via.placeholder.com/300?text=Item+3" alt="Gallery item 3">
+                `;
+                imgs = container.querySelectorAll('img');
+                updateCarousel();
+            }
+        }
 
         function updateCarousel() {
             imgs.forEach((img, i) => {
@@ -801,11 +849,16 @@
 
         // Auto-play carousel
         setInterval(() => {
-            idx = (idx + 1) % imgs.length;
-            updateCarousel();
+            if (imgs.length > 0) {
+                idx = (idx + 1) % imgs.length;
+                updateCarousel();
+            }
         }, 5000);
 
-        updateCarousel();
+        document.addEventListener('DOMContentLoaded', () => {
+            loadGallery();
+            document.body.classList.remove('loading');
+        });
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -842,11 +895,6 @@
             card.style.transform = 'translateY(30px)';
             card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(card);
-        });
-
-        // Add loading states
-        document.addEventListener('DOMContentLoaded', () => {
-            document.body.classList.remove('loading');
         });
     </script>
 </body>
