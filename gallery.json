@@ -1,0 +1,29 @@
+{
+  "images": [
+    {
+      "src": "https://via.placeholder.com/300x300/4f46e5/ffffff?text=Living+Room+Set",
+      "alt": "Modern Living Room Furniture Set",
+      "title": "Living Room Collection"
+    },
+    {
+      "src": "https://via.placeholder.com/300x300/059669/ffffff?text=Bedroom+Suite",
+      "alt": "Elegant Bedroom Suite",
+      "title": "Bedroom Collection"
+    },
+    {
+      "src": "https://via.placeholder.com/300x300/dc2626/ffffff?text=Dining+Room",
+      "alt": "Dining Room Table and Chairs",
+      "title": "Dining Room Collection"
+    },
+    {
+      "src": "https://via.placeholder.com/300x300/7c3aed/ffffff?text=Mattresses",
+      "alt": "Premium Mattress Collection",
+      "title": "Mattress Collection"
+    },
+    {
+      "src": "https://via.placeholder.com/300x300/ea580c/ffffff?text=Office+Furniture",
+      "alt": "Home Office Furniture",
+      "title": "Office Collection"
+    }
+  ]
+}
